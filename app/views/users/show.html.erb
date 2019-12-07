@@ -1,5 +1,6 @@
 <div class="profile-container">
     <h3 class="profile-name"><%= @user.name %></h3>
+<%= attachment_image_tag @user, :profile_image, format: 'jpg', fallback: "no_image.jpg", size:'200x200' %>
 
     <% if @user == current_user %>
         <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "pull-right" %></p>
@@ -7,13 +8,19 @@
 </div>
 
 
-  <div class="container-fluid masonry-container">
-    <div class="row">
-      <div class="col-md-8 col-sm-offset-2">
-        <div class="masonry-wrapper-cols">
-          <div class="masonry-gutter"></div>
+<h3>New Book</h3>
+<%= form_for(@book_new) do |f| %>
+  <%= f.text_field :title %>
+  <%= f.text_area :body %>
+  <% f.submit "create book" %>
+  <% end %>
 
-        </div>
-      </div>
-    </div>
-  </div>
+
+<h3>Books</h3>
+<table>
+  <tr><th>title</th><th>opinion</th></tr>
+  <% @books.each do |book| %>
+  <tr><td><%= book.title %></td><td><%= book.body %></td></tr>
+</table>
+
+<% end %>
