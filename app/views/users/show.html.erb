@@ -1,0 +1,19 @@
+<div class="profile-container">
+    <h3 class="profile-name"><%= @user.name %></h3>
+
+    <% if @user == current_user %>
+        <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "pull-right" %></p>
+    <% end %>
+</div>
+
+
+  <div class="container-fluid masonry-container">
+    <div class="row">
+      <div class="col-md-8 col-sm-offset-2">
+        <div class="masonry-wrapper-cols">
+          <div class="masonry-gutter"></div>
+
+        </div>
+      </div>
+    </div>
+  </div>
