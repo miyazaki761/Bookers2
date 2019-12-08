@@ -1,3 +1,12 @@
+<h3>Book detail</h3>
+
+<%= attachment_image_tag @user, :profile_image, :fill, format: 'jpeg' %>
+<%= @user.name %>
+<%= @book.title %>
+<%= @book.body %>
+
+
 <% if @book.user == current_user %>
-  <%= link_to "削除", books_path(@book), method: :delete %>
+  <%= link_to "Edit", edit_book_path(@book), method: :edit %>
+  <%= link_to "Destroy", books_path(@book), method: :delete %>
   <% end %>

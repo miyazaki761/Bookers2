@@ -1,18 +1,26 @@
-<div class="profile-container">
-    <h3 class="profile-name"><%= @user.name %></h3>
+
+<h3>User info</h3>
 <%= attachment_image_tag @user, :profile_image, format: 'jpg', fallback: "no_image.jpg", size:'200x200' %>
 
-    <% if @user == current_user %>
-        <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "pull-right" %></p>
-    <% end %>
-</div>
+<h3>name</h3>
+<%= @user.name %>
+<h3>introduction</h3>
+<%= @user.introduction %>
+<%= link_to "#", edit_user_path %>
+
+
+<% if @user == current_user %>
+<p><%= link_to "プロフィール編集", edit_user_path(@user), class: "pull-right" %></p>
+<% end %>
 
 
 <h3>New Book</h3>
 <%= form_for(@book_new) do |f| %>
+  <%= f.label :name %>
   <%= f.text_field :title %>
+  <%= f.label :opinion %>
   <%= f.text_area :body %>
-  <% f.submit "create book" %>
+  <%= f.submit "create book" %>
   <% end %>
 
 
