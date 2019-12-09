@@ -15,10 +15,15 @@
         <%= link_to 'Books', books_path %>
         <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
     <% else %>
-        <%= link_to "新規登録", new_user_registration_path %>
+        <%= link_to 'Home', root_path %>
+        <%= link_to 'About', about_books_path %>
 
-        <%= link_to "ログイン", new_user_session_path %>
+        <%= link_to 'sign up', new_user_registration_path %>
+        <%= link_to 'log in', books_path %>
     <% end %>
    <%= yield %>
   </body>
+  <footer>
+    <p>Copyright Infratop.inc</p>
+  </footer>
 </html>

@@ -1,14 +1,16 @@
-<h3>Users</h3>
 
-<% @users.each do |user| %>
+<%= render partial: 'shared/sample', locals: { user: @user, book_new: @new_book } %>
+
+<h3>Users</h3>
 <table>
 	<tr>
 		<th>image</th><th>name</th><th></th>
 	</tr>
-	<td>
-		<th><%= user.name %></th>
-		<th><%= user.name %></th>
-		<th><%= link_to "show", user_path(user) %></th>
-	</td>
+	<% @users.each do |user| %>
+	<tr>
+		<td><%= attachment_image_tag user, :profile_image %></td>
+		<td><%= user.name %></td>
+		<td><%= link_to "show", user_path(user) %></td>
+	</tr>
 </table>
 <% end %>

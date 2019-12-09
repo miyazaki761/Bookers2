@@ -5,5 +5,11 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users
-  resources :books
+
+  resources :books do
+   	collection do
+  	get :about
+  end
+end
+
 end

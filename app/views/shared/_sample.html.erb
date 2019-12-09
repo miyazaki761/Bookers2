@@ -1,0 +1,20 @@
+<h3>User info</h3>
+<%= attachment_image_tag user, :profile_image, format: 'jpg', fallback: "no_image.jpg", size:'200x200' %>
+
+<h3>name</h3>
+<%= @user.name %>
+<h3>introduction</h3>
+<%= @user.introduction %>
+<% if @user == current_user %>
+<%= link_to "編集", edit_user_path(@user) %>
+<% end %>
+
+
+<h3>New Book</h3>
+<%= form_for(@book) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :title %>
+  <%= f.label :opinion %>
+  <%= f.text_area :body %>
+  <%= f.submit "create book" %>
+  <% end %>
