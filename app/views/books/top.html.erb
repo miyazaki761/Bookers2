@@ -1,13 +1,16 @@
+<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
 <% if flash[:notice] %>
 <%= flash[:notice] %>
 <% end %>
 
-<h1>welcome to Bookers !!</h1>
+<h1>welcome to <span class="glyphicon glyphicon-book" aria-hidden="true"></span>Bookers !!</h1>
 
-<p>In Bookers,<br>
+<p>In <span class="glyphicon glyphicon-book" aria-hidden="true"></span>Bookers,<br>
 you can share and exchange your opinions , inpressions , and emotions<br>
 
 about various books!</p>
 
-<%= link_to "Log in", new_user_session_path %>
-<%= link_to "Sign up", new_user_registration_path %>
+<span class="label label-info">
+<%= link_to "Log in", new_user_session_path %></span>
+<span class="label label-success"><%= link_to "Sign up", new_user_registration_path %></span>

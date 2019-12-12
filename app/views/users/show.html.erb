@@ -2,33 +2,16 @@
 <%= flash[:notice] %>
 <% end %>
 
-<h3>User info</h3>
-<%= attachment_image_tag @user, :profile_image, format: 'jpg', fallback: "no_image.jpg", size:'200x200' %>
-
-<h3>name</h3>
-<%= @user.name %>
-<h3>introduction</h3>
-<%= @user.introduction %>
-<% if @user == current_user %>
-<%= link_to "編集", edit_user_path(@user) %>
-<% end %>
+<%= render partial: 'shared/sample', locals: { book: @book_new, user: @user } %>
 
 
-<h3>New Book</h3>
-<%= form_for(@book_new) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :title %>
-  <%= f.label :opinion %>
-  <%= f.text_area :body %>
-  <%= f.submit "create book" %>
-  <% end %>
-
-
+<div class="col-md-7">
 <h3>Books</h3>
-<table>
+<table class="table">
   <tr><th>title</th><th>opinion</th></tr>
   <% @books.each do |book| %>
-  <tr><td><%= book.title %></td><td><%= book.body %></td></tr>
+  <tr><td><%= link_to book.title, book_path(book) %></td><td><%= book.body %></td></tr>
+  <% end %>
 </table>
 
-<% end %>
+</div>

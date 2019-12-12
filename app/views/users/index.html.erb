@@ -1,16 +1,33 @@
+<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<div class="row">
+<%= render partial: 'shared/sample', locals: { user: @user, book: @new_book } %>
 
-<%= render partial: 'shared/sample', locals: { user: @user, book_new: @new_book } %>
 
-<h3>Users</h3>
-<table>
-	<tr>
-		<th>image</th><th>name</th><th></th>
-	</tr>
-	<% @users.each do |user| %>
-	<tr>
-		<td><%= attachment_image_tag user, :profile_image %></td>
-		<td><%= user.name %></td>
-		<td><%= link_to "show", user_path(user) %></td>
-	</tr>
+
+
+
+
+<div class="col-md-7">
+	<h3>Users</h3>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>image</th>
+			<th>name</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+			<% @users.each do |user| %>
+
+		<tr>
+			<th><%= attachment_image_tag user, :profile_image, size: '40x40' %></th>
+			<td><%= user.name %></td>
+			<td><%= link_to "show", user_path(user) %></td>
+		</tr>
+		<% end %>
+	</tbody>
 </table>
-<% end %>
+</div>
+</div>

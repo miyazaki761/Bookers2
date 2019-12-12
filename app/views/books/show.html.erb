@@ -2,16 +2,17 @@
 <%= flash[:notice] %>
 <% end %>
 
+<%= render partial: 'shared/sample', locals: { book: @book, user: @user } %>
+
 
 <h3>Book detail</h3>
-
-<%= attachment_image_tag @user, :profile_image, :fill, format: 'jpeg' %>
-<%= @user.name %>
+<%= attachment_image_tag @user, :profile_image, format: 'jpg', fallback: "no_image.jpg", size:'50x50' %>
+<%= link_to @user.name, user_path(@user) %>
 <%= @book.title %>
 <%= @book.body %>
 
 
 <% if @book.user == current_user %>
   <%= link_to "Edit", edit_book_path(@book), method: :edit %>
-  <%= link_to "Destroy", books_path(@book), method: :delete %>
+  <%= link_to "Destroy", book_path(@book), method: :delete %>
   <% end %>

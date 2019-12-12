@@ -4,12 +4,10 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :users
 
-  resources :books do
-   	collection do
-  	get :about
-  end
-end
+  resources :users
+    get '/home/about' => 'users#about'
+
+  resources :books
 
 end
